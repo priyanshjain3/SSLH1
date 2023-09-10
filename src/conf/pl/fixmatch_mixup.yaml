@@ -1,0 +1,20 @@
+# @package pl
+
+defaults:
+  - /activation: softmax
+  - /criterion@criterion_s: ce_vec
+  - /criterion@criterion_u: ce_vec
+
+criterion_s:
+  reduction: "mean"
+
+criterion_u:
+  reduction: "mean"
+
+_target_: "sslh.pl_modules.fixmatch.fixmatch_mixup.FixMatchMixup"
+
+log_on_epoch: ${data.log_on_epoch}
+lambda_u: 1.0
+threshold: 0.90
+alpha: 0.25
+use_mixed_labels: true

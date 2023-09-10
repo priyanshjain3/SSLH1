@@ -1,0 +1,40 @@
+# Folders
+.idea/
+.ipynb_checkpoints/
+.vs/
+.vscode/
+__pycache__/
+build/
+/data/
+dist/
+old/
+results/
+tensorboard/
+lightning_logs/
+outputs/
+.hydra/
+boards/
+logs/
+img/
+calmip_logs/
+
+# Folders mask
+*.egg-info/
+
+# Filetypes
+*.pyc
+*.err
+*.out
+*.torch
+*.ign*
+*_ign*
+.tmp*
+ign_*
+
+# Specific files/folders
+.sbatch.sh
+cfg.sh
+notebooks/nb_data
+notebooks/geckodriver.log
+corpus
+scripts/cache/
