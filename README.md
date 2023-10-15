@@ -81,22 +81,27 @@ To download a dataset, you can use the `data.download=true` option.
 ## Usage
 This code use Hydra for parsing args. The syntax of setting an argument is "name=value" instead of "--name value".
 
-Example 1 : MixMatch on ESC10
+Example 1 : Itermix on ESC10
+```bash
+python -m sslh.mixmatch data=ssl_esc10 pl=itermix data.dm.download=true
+```
+
+Example 2 : MixMatch on ESC10
 ```bash
 python -m sslh.mixmatch data=ssl_esc10 data.dm.download=true
 ```
 
-Example 2 : Supervised+Weak on GSC
+Example 3 : Supervised+Weak on GSC
 ```bash
 python -m sslh.supervised data=sup_gsc aug@train_aug=weak data.dm.bsize=256 epochs=300 data.dm.download=true
 ```
 
-Example 3 : FixMatch+MixUp on UBS8K
+Example 4 : FixMatch+MixUp on UBS8K
 ```bash
 python -m sslh.fixmatch data=ssl_ubs8K pl=fixmatch_mixup data.dm.bsize_s=128 data.dm.bsize_u=128 epochs=300 data.dm.download=true
 ```
 
-Example 4 : ReMixMatch on CIFAR-10
+Example 5 : ReMixMatch on CIFAR-10
 ```bash
 python -m sslh.remixmatch data=ssl_cifar10 model.n_input_channels=3 aug@weak_aug=img_weak aug@strong_aug=img_strong data.dm.download=true
 ```
@@ -214,26 +219,3 @@ number: arXiv:1904.12848 arXiv:1904.12848 [cs, stat]. [Online]. Available:
 http://arxiv.org/abs/1904.12848
 
 <!-- Cances, L., Labbé, E. & Pellegrini, T. Comparison of semi-supervised deep learning algorithms for audio classification. J AUDIO SPEECH MUSIC PROC. 2022, 23 (2022). https://doi.org/10.1186/s13636-022-00255-6 -->
-
-## Cite this repository
-If you use this code, you can cite the following paper associated :
-```
-@article{cances_comparison_2022,
-	title = {Comparison of semi-supervised deep learning algorithms for audio classification},
-	volume = {2022},
-	issn = {1687-4722},
-	url = {https://doi.org/10.1186/s13636-022-00255-6},
-	doi = {10.1186/s13636-022-00255-6},
-	abstract = {In this article, we adapted five recent SSL methods to the task of audio classification. The first two methods, namely Deep Co-Training (DCT) and Mean Teacher (MT), involve two collaborative neural networks. The three other algorithms, called MixMatch (MM), ReMixMatch (RMM), and FixMatch (FM), are single-model methods that rely primarily on data augmentation strategies. Using the Wide-ResNet-28-2 architecture in all our experiments, 10\% of labeled data and the remaining 90\% as unlabeled data for training, we first compare the error rates of the five methods on three standard benchmark audio datasets: Environmental Sound Classification (ESC-10), UrbanSound8K (UBS8K), and Google Speech Commands (GSC). In all but one cases, MM, RMM, and FM outperformed MT and DCT significantly, MM and RMM being the best methods in most experiments. On UBS8K and GSC, MM achieved 18.02\% and 3.25\% error rate (ER), respectively, outperforming models trained with 100\% of the available labeled data, which reached 23.29\% and 4.94\%, respectively. RMM achieved the best results on ESC-10 (12.00\% ER), followed by FM which reached 13.33\%. Second, we explored adding the mixup augmentation, used in MM and RMM, to DCT, MT, and FM. In almost all cases, mixup brought consistent gains. For instance, on GSC, FM reached 4.44\% and 3.31\% ER without and with mixup. Our PyTorch code will be made available upon paper acceptance at https://github.com/Labbeti/SSLH.},
-	number = {1},
-	journal = {EURASIP Journal on Audio, Speech, and Music Processing},
-	author = {Cances, Léo and Labbé, Etienne and Pellegrini, Thomas},
-	month = sep,
-	year = {2022},
-	pages = {23},
-}
-```
-
-## Contact
-Maintainer:
-- Etienne Labbé "Labbeti": labbeti.pub@gmail.com
