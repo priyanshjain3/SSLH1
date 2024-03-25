@@ -172,16 +172,14 @@ class MixMatch(LightningModule):
         # Shuffle W
         indices = torch.randperm(len(xw))
         xw, yw = xw[indices], yw[indices]
-        alphas=[0.25,0.5,0.75]
-        # Apply Mixup twice
+        alpha=0.5
         
-        for alpha in alphas:
-            self.log_params = dict(on_epoch=True, on_step=not True)
-            self.mixup = MixupModule(alpha=alpha, apply_max=True)
-            bsize_s = len(xs_weak)
-            xs_mix, ys_mix = self.mixup(xs_weak, xw[:bsize_s], ys, yw[:bsize_s])
-            xu_mix, yu_mix = self.mixup(xu_weak_lst, xw[bsize_s:], yu_lst, yw[bsize_s:])
-            #print("Mixup applied for alpha = ",alpha)
+        self.log_params = dict(on_epoch=True, on_step=not True)
+        self.mixup = MixupModule(alpha=alpha, apply_max=True)
+        bsize_s = len(xs_weak)
+        xs_mix, ys_mix = self.mixup(xs_weak, xw[:bsize_s], ys, yw[:bsize_s])
+        xu_mix, yu_mix = self.mixup(xu_weak_lst, xw[bsize_s:], yu_lst, yw[bsize_s:])
+        #print("Mixup applied for alpha = ",alpha)
         return xs_mix, xu_mix, ys_mix, yu_mix
 
     @torch.no_grad()
