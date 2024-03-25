@@ -30,12 +30,8 @@ With 3 models :
 - [MobileNetV1 (MNV1)](https://arxiv.org/pdf/1704.04861.pdf)
 - [MobileNetV2 (MNV2)](https://arxiv.org/pdf/1801.04381.pdf)
 
-**IMPORTANT NOTE: The implementation of Mean Teacher (MT), Deep Co-Training (DCT) and Pseudo-Labeling (PL) are present in this repository but not fully tested.**
 
-You can find a more stable version of MT and DCT at https://github.com/Labbeti/semi-supervised.
-The datasets AudioSet and FSD50K are in beta testing.
-
-If you meet problems to run experiments, you can contact me at `labbeti.pub@gmail.com`.
+If you meet problems to run experiments, you can contact me at `lpriyanshjainofficial@gmail.com`.
 
 
 ## Installation
