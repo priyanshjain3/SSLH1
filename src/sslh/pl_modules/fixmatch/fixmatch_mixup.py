@@ -96,27 +96,25 @@ class FixMatchMixup(FixMatch):
         # Compute pseudo-labels 'yu' and mask
         with torch.no_grad():
             yu, mask = self.guess_label_and_mask(xu_weak)
-            alpha_values=[0.25, 0.5, 0.75]
-            alphas=[]
-            
-            # Apply mixup for the alpha values
-            for alpha in alpha_values:
+            alpha=0.5
+            #alphas=[]
+
                 # print('mixup initiated')
                 # print('alpha',alpha)
                 
                 #print('alphas', alphas)
-                use_mixed_labels: bool = False
+            use_mixed_labels: bool = False
                 #alphas.append(int(alpha))
-                self.alpha = alpha
-                self.mixup = MixupModule(alpha=alpha, apply_max=True) 
-                print('Mixup initiated for alpha', alpha)
-                self.use_mixed_labels = use_mixed_labels
+            self.alpha = alpha
+            self.mixup = MixupModule(alpha=alpha, apply_max=True) 
+            print('Mixup initiated for alpha', alpha)
+            self.use_mixed_labels = use_mixed_labels
                 #print('alphas:', alphas)
                 #alphas[alpha] = alpha
                 
-                xs_mix, ys_mix = self.mixup(xs_weak, xu_strong, ys, yu)
-                xu_mix, yu_mix = self.mixup(xu_strong, xs_weak, yu, ys)
-                print('Mixup done for alpha', alpha) 
+            xs_mix, ys_mix = self.mixup(xs_weak, xu_strong, ys, yu)
+            xu_mix, yu_mix = self.mixup(xu_strong, xs_weak, yu, ys)
+            print('Mixup done for alpha', alpha) 
 
 
         # Compute predictions on xs and xu
