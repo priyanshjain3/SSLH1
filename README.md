@@ -41,7 +41,7 @@ If you meet problems to run experiments, you can contact me at `labbeti.pub@gmai
 ## Installation
 #### Download & setup
 ```bash
-git clone https://github.com/Labbeti/SSLH
+git clone https://github.com/priyanshjain3/SSLH1
 conda env create -n env_sslh -f environment.yaml
 conda activate env_sslh
 pip install -e SSLH --no-dependencies
@@ -50,7 +50,7 @@ pip install -e SSLH --no-dependencies
 #### Alternatives
 - As python package :
 ```bash
-pip install https://github.com/Labbeti/SSLH
+pip install https://github.com/priyanshjain3/SSLH1
 ```
 The dependencies will be automatically installed with pip instead of conda, which means the the build versions can be slightly different.
 
@@ -96,9 +96,9 @@ Example 3 : Supervised+Weak on GSC
 python -m sslh.supervised data=sup_gsc aug@train_aug=weak data.dm.bsize=256 epochs=300 data.dm.download=true
 ```
 
-Example 4 : FixMatch+MixUp on UBS8K
+Example 4 : FixMatch+IterMixUp on UBS8K
 ```bash
-python -m sslh.fixmatch data=ssl_ubs8K pl=fixmatch_mixup data.dm.bsize_s=128 data.dm.bsize_u=128 epochs=300 data.dm.download=true
+python -m sslh.fixmatch data=ssl_ubs8K pl=fixmatch_itermixup data.dm.bsize_s=128 data.dm.bsize_u=128 epochs=300 data.dm.download=true
 ```
 
 Example 5 : ReMixMatch on CIFAR-10
